@@ -1,117 +1,71 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
+  <q-layout view="hHh LpR fff">
+    <q-header reveal elevated class="bg-white text-primary">
       <q-toolbar>
-        <q-btn
-          flat
+        <q-space />
+        <q-avatar class="q-mx-md" square style="width: 80px">
+          <img src="icons/logo.png" />
+        </q-avatar>
+        <q-input
+          class="q-px-xl"
+          standout="bg-secondary text-white"
+          v-model="searchMain"
+          label="Pesquise por algo"
           dense
-          round
-          icon="menu"
-          aria-label="Menu"
-          @click="toggleLeftDrawer"
-        />
+          color="primary"
+          label-color="primary"
+        >
+          <template v-slot:append>
+            <q-icon
+              v-if="searchMain !== ''"
+              name="close"
+              @click="searchMain = ''"
+              class="cursor-pointer"
+            />
+            <q-icon color="primary" name="search" />
+          </template>
+        </q-input>
 
-        <q-toolbar-title>
-          Quasar App
-        </q-toolbar-title>
-
-        <div>Quasar v{{ $q.version }}</div>
+        <q-btn class="q-mr-md" color="primary" label="Login" />
+        <q-btn outline color="primary" label="Registrar" />
+        <q-space />
       </q-toolbar>
     </q-header>
 
-    <q-drawer
-      v-model="leftDrawerOpen"
-      show-if-above
-      bordered
-    >
-      <q-list>
-        <q-item-label
-          header
-        >
-          Essential Links
-        </q-item-label>
-
-        <EssentialLink
-          v-for="link in linksList"
-          :key="link.title"
-          v-bind="link"
-        />
-      </q-list>
-    </q-drawer>
-
-    <q-page-container>
+    <q-page-container class="bg-custom">
       <router-view />
     </q-page-container>
+
+    <q-footer bordered class="bg-primary text-white">
+      <q-toolbar>
+        <q-toolbar-title> </q-toolbar-title>
+      </q-toolbar>
+    </q-footer>
   </q-layout>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import EssentialLink, { EssentialLinkProps } from 'components/EssentialLink.vue';
-
-const linksList: EssentialLinkProps[] = [
-  {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'https://quasar.dev'
-  },
-  {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
-    icon: 'code',
-    link: 'https://github.com/quasarframework'
-  },
-  {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
-    icon: 'chat',
-    link: 'https://chat.quasar.dev'
-  },
-  {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev'
-  },
-  {
-    title: 'Twitter',
-    caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev'
-  },
-  {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
-    icon: 'public',
-    link: 'https://facebook.quasar.dev'
-  },
-  {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    link: 'https://awesome.quasar.dev'
-  }
-];
 
 export default defineComponent({
   name: 'MainLayout',
 
-  components: {
-    EssentialLink
-  },
+  components: {},
 
-  data () {
+  data(): {
+    searchMain: string;
+  } {
     return {
-      linksList,
-      leftDrawerOpen: false
-    }
+      searchMain: '',
+    };
   },
 
-  methods: {
-    toggleLeftDrawer () {
-      this.leftDrawerOpen = !this.leftDrawerOpen;
-    }
-  }
+  methods: {},
 });
 </script>
+
+<style scoped>
+.bg-custom {
+  background-color: #f2f2f2;
+}
+</style>
