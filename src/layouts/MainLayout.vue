@@ -38,7 +38,11 @@
 
     <q-footer bordered class="bg-primary text-white">
       <q-toolbar>
-        <q-toolbar-title> </q-toolbar-title>
+        <q-space />
+        <div class="text-weight-thin text-center"
+          >MeloVendas feito com muito amor S2</div
+        >
+        <q-space />
       </q-toolbar>
     </q-footer>
   </q-layout>
