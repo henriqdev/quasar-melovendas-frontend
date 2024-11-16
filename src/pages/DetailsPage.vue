@@ -67,7 +67,7 @@
             Lorem ipsum dolor sit amet
           </div>
         </div>
-        <div class="q-mr-md q-pt-xl col-12 column items-center">
+        <div class="q-mr-md q-mt-xl q-mb-lg col-12 column items-center">
           <q-btn class="full-width" label="Entrar em contato" color="primary" no-caps />
         </div>
       </div>
