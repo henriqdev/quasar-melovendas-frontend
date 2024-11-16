@@ -1,44 +1,39 @@
 <template>
-  <q-page class="row items-center justify-evenly">
-    <!-- <div class="q-pa-md row items-start q-gutter-md"> -->
-    <div class="my-card q-ma-md row items-start q-gutter-xs">
-      <q-card class="child-card col-2" flat bordered v-for="n in 5" :key="n">
-        <q-img src="https://cdn.quasar.dev/img/chicken-salad.jpg" />
+  <q-page class="column items-center">
+    <div
+      class="mv-container-card row justify-start items-start content-start q-ma-md q-pa-lg"
+    >
+      <div class="q-pl-sm text-h5 text-secondary text-weight-medium col-12">
+        Ultimos adicionados
+      </div>
+      <div class="col-xs-12 col-md-4 col-lg-3" v-for="n in 11" :key="n">
+        <q-card class="q-ma-sm border-custom child-card" flat bordered>
+          <q-img src="https://cdn.quasar.dev/img/chicken-salad.jpg" />
 
-        <q-card-section>
-          <q-btn
-            fab
-            color="primary"
-            icon="place"
-            class="absolute"
-            style="top: 0; right: 12px; transform: translateY(-50%)"
-          />
-
-          <div class="row no-wrap items-center">
-            <div class="col text-h6 ellipsis">Cafe Basilico</div>
-            <div
-              class="col-auto text-grey text-caption q-pt-md row no-wrap items-center"
-            >
-              <q-icon name="place" />
-              250 ft
+          <q-card-section>
+            <div class="row column items-start">
+              <div class="col-12 text-subtitle1" style="max-height: 60px">
+                Bateria bacana /br toca facil até mesmo sozinho
+              </div>
+              <div class="col-12 text-secondary text-body2 q-py-sm">
+                R$ 2.562,00
+              </div>
+              <q-btn
+                unelevated
+                no-caps
+                class="col-12 full-width"
+                color="primary"
+                to="detalhamento"
+              >
+                ver detalhes
+              </q-btn>
             </div>
-          </div>
-        </q-card-section>
-
-        <q-card-section class="q-pt-none">
-          <div class="text-subtitle1">$・Italian, Cafe</div>
-          <div class="text-caption text-grey">
-            Small plates, salads & sandwiches in an intimate setting.
-          </div>
-        </q-card-section>
-
-        <q-separator />
-
-        <q-card-actions>
-          <q-btn flat round icon="event" />
-          <q-btn flat color="primary"> Reserve </q-btn>
-        </q-card-actions>
-      </q-card>
+          </q-card-section>
+        </q-card>
+      </div>
+      <q-btn class="col-12 full-width" flat color="primary">
+        Carregar mais
+      </q-btn>
     </div>
   </q-page>
 </template>
@@ -57,15 +52,18 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
-.my-card {
-  width: 90%;
+<style lang="scss" scope>
+.mv-container-card {
+  width: 1200px;
   height: 100%;
   border-radius: 12px;
   background-color: white;
 }
 .child-card {
-  width: 200px;
-  height: 200px;
+  overflow: auto;
+}
+.border-custom {
+  border: 2px solid $primary;
+  border-radius: 8px;
 }
 </style>
